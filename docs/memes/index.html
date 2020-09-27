@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
     <title>RottenSwap Memes</title>
       <style>
         body {
           margin: 0
         }
         p {
+          font-family: Roboto Mono;
           display: block; 
           max-width: 600px; 
           margin: auto;
@@ -31,7 +36,7 @@
         const response = await fetch('https://api.github.com/repos/rottenswap/memes/contents/memesFolder')
         const data = await response.json();
         const message = document.createElement('p')
-        message.innerHTML = 'How to add memes: 1. go to the telegram chat <a href="https://t.me/rottenswap">https://t.me/rottenswap</a>, 2. send your meme as a picture with the caption /add_meme, 3. your piece of art will be displayed here and might be returned with /rotme'
+        message.innerHTML = 'To add memes join <a href="https://t.me/rottenswap">https://t.me/rottenswap</a> and send your meme as a picture with the caption <a href="">/add_meme</a>'
         document.body.appendChild(message)
 
         for (let file of data) {

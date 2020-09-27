@@ -49,6 +49,8 @@
         const proposalId = getProposalId()
         console.log({proposalId})
 
+        spacer()
+
         if (proposalId) {
           await proposal(proposalId)
         }
@@ -57,6 +59,7 @@
         }
 
         footer()
+        spacer()
 
         async function proposal(id) {
           const loading = document.createElement('p')
@@ -77,16 +80,16 @@
           }
 
           // header
-          const headerMessage = document.createElement('a')
-          headerMessage.href = window.location.href.split('?')[0]
+          const headerMessage = document.createElement('p')
           headerMessage.innerHTML = `Proposal ID ${proposal.id}`
           headerMessage.className = 'center'
           document.body.appendChild(headerMessage)
+          spacer()
           helpInfo(id)
 
           // title
           const title = document.createElement('p')
-          title.innerHTML = `${proposal.id}. ${proposal.title} (${proposal.voteCount} votes)`
+          title.innerHTML = `${proposal.id}. ${proposal.title}`
           title.className = 'bold'
           document.body.appendChild(title)
 
@@ -100,10 +103,30 @@
             console.log(answer)
           
             const title = document.createElement('p')
-            title.innerHTML = `${answer.id}. ${answer.title} (${answer.voteCount} votes)`
+            title.innerHTML = `${answer.id}. ${answer.title} (${answer.voteRotCount.split('.')[0]} ROT / ${answer.voteCount} votes)`
+            title.className = 'bold'
             document.body.appendChild(title)
           }
 
+          // votes
+          spacer()
+          const voteTitle = document.createElement('p')
+          voteTitle.innerHTML = 'Votes'
+          headerMessage.className = 'center'
+          document.body.appendChild(voteTitle)
+          for (const vote of proposal.votes) {
+            console.log(vote)
+          
+            const voteElement = document.createElement('p')
+            let answerTitle = proposal.answers[vote.answerId].title
+            if (answerTitle.length > 30) {
+              answerTitle = answerTitle.substring(0, 30) + '...'
+            }
+            voteElement.innerHTML = `${formatEthAddress(vote.ethAddress)} (${vote.rotBalanceAll.split('.')[0]} ROT): ${answerTitle}`
+            document.body.appendChild(voteElement)
+          }
+
+          spacer()
           // back button
           const backButton = document.createElement('a')
           backButton.href = window.location.href.split('?')[0]
@@ -122,6 +145,7 @@
           try {
             const response = await fetch(`${apiUrl}/getProposals`)
             proposals = await response.json()
+            proposals = proposals.filter(proposal => proposal.status !== 'hidden')
             console.log({proposals})
             loading.remove()
           }
@@ -137,20 +161,30 @@
           headerMessage.innerHTML = `Proposals`
           headerMessage.className = 'center'
           document.body.appendChild(headerMessage)
+          spacer()
           helpInfo()
 
           // proposals
           for (const proposal of proposals) {          
             const title = document.createElement('a')
             title.href = `?id=${proposal.id}`
-            title.innerHTML = `${proposal.id}. ${proposal.title} (${proposal.voteCount} votes)`
+            const voteRotCount = proposal.voteRotCount ? proposal.voteRotCount.toFixed(0) : 0
+            title.innerHTML = `${proposal.id}. ${proposal.title} (${voteRotCount} ROT / ${proposal.voteCount} votes)`
             title.className = 'bold'
             document.body.appendChild(title)
 
             const description = document.createElement('p')
             description.innerHTML = proposal.description
             document.body.appendChild(description)
+
+            spacer()
           }
+        }
+
+        function spacer() {
+          const space = document.createElement('p')
+          space.innerHTML = ''
+          document.body.appendChild(space)
         }
 
         function helpInfo(proposalId) {
@@ -165,6 +199,12 @@
           footerMessage.innerHTML = `This page sucks. DM @timtemplet on Telegram if you're interested in designing a better one.`
           footerMessage.className = 'center'
           document.body.appendChild(footerMessage)
+        }
+
+        function formatEthAddress (ethAddress) {
+          const parts = ethAddress.match(/......./g)
+          console.log(parts, ethAddress)
+          return `<a style="display:inline; padding: 0" target="_blank" href="https://etherscan.io/address/${ethAddress}">${parts[0]}...${parts[parts.length - 1]}</a>`
         }
 
         function getProposalId () {
