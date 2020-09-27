@@ -209,7 +209,7 @@
 
         function getProposalId () {
           try {
-            return window.location.search.match(/id=[^&#]/)[0].replace('id=', '')
+            return window.location.search.match(/id=[^&#]+/)[0].replace('id=', '')
           }
           catch (e) {}
         }
