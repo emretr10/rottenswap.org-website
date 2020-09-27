@@ -189,8 +189,8 @@
 
         function helpInfo(proposalId) {
           const helpInfo = document.createElement('p')
-          const proposalIdText = proposalId || `"proposalId"`
-          helpInfo.innerHTML = `Note: Use command /add_vote in <a target="_blank" style="display:inline; padding: 0" href="https://t.me/rottengovernance">t.me/rottengovernance</a>`
+          const command = proposalId ? '/add_vote' : '/add_proposal'
+          helpInfo.innerHTML = `Note: Use command ${command} in <a target="_blank" style="display:inline; padding: 0" href="https://t.me/rottengovernance">t.me/rottengovernance</a>`
           document.body.appendChild(helpInfo)
         }
 
