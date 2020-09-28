@@ -130,8 +130,8 @@
             voteElement.innerHTML = `${formatEthAddress(vote.ethAddress)} (${vote.rotBalanceAll.split('.')[0]} ROT): ${answerTitle}`
             document.body.appendChild(voteElement)
           }
-
           spacer()
+          
           // back button
           const backButton = document.createElement('a')
           backButton.href = window.location.href.split('?')[0]
@@ -142,6 +142,8 @@
         }
 
         async function allProposals() {
+          const isArchive = getIsArchive()
+
           const loading = document.createElement('p')
           loading.innerHTML = `Loading...`
           loading.className = 'center'
@@ -151,7 +153,11 @@
           try {
             const response = await fetch(`${apiUrl}/getProposals`)
             proposals = await response.json()
-            proposals = proposals.filter(proposal => proposal.status !== 'hidden')
+
+            if (!isArchive) {
+              proposals = proposals.filter(proposal => proposal.status !== 'hidden')
+            }
+
             console.log({proposals})
             loading.remove()
           }
@@ -185,6 +191,20 @@
 
             spacer()
           }
+
+          // archive / back  button
+          const backButton = document.createElement('a')
+          backButton.className = 'center'
+          if (!isArchive) {
+            backButton.href = window.location.href.split('?')[0] + '?archive=true'
+            backButton.innerHTML = 'Archive'
+          }
+          else {
+            backButton.href = window.location.href.split('?')[0]
+            backButton.innerHTML = 'All proposals'
+          }
+          document.body.appendChild(backButton)
+          spacer()
         }
 
         function spacer() {
@@ -222,6 +242,13 @@
         function getProposalId () {
           try {
             return window.location.search.match(/id=[^&#]+/)[0].replace('id=', '')
+          }
+          catch (e) {}
+        }
+
+        function getIsArchive () {
+          try {
+            return window.location.search.match(/archive=[^&#]+/)[0].replace('archive=', '')
           }
           catch (e) {}
         }
