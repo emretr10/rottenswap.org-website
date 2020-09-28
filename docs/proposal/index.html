@@ -135,7 +135,7 @@
           // back button
           const backButton = document.createElement('a')
           backButton.href = window.location.href.split('?')[0]
-          backButton.innerHTML = 'All proposals'
+          backButton.innerHTML = 'Open proposals'
           backButton.className = 'center'
           document.body.appendChild(backButton)
           spacer()
@@ -170,7 +170,12 @@
 
           // header
           const headerMessage = document.createElement('p')
-          headerMessage.innerHTML = `Proposals`
+          if (!isArchive) {
+            headerMessage.innerHTML = `Open proposals`
+          }
+          else {
+            headerMessage.innerHTML = `Archive`
+          }
           headerMessage.className = 'center'
           document.body.appendChild(headerMessage)
           spacer()
@@ -201,7 +206,7 @@
           }
           else {
             backButton.href = window.location.href.split('?')[0]
-            backButton.innerHTML = 'All proposals'
+            backButton.innerHTML = 'Open proposals'
           }
           document.body.appendChild(backButton)
           spacer()
