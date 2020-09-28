@@ -16,6 +16,7 @@
           max-width: 600px; 
           margin: auto;
           padding: 8px;
+          overflow: hidden;
         }
         a {
           color: black;
@@ -23,6 +24,10 @@
         }
         .center {
           text-align: center;
+        }
+        .translate-center {
+          transform: translateX(50%);
+          margin-left: -50%;
         }
         .bold {
           font-weight: 800
@@ -196,9 +201,15 @@
 
         function footer () {
           const footerMessage = document.createElement('p')
-          footerMessage.innerHTML = `This page sucks. DM @timtemplet on Telegram if you're interested in designing a better one.`
+          footerMessage.innerHTML = `Are you a dev or designer?<br>Volunteer in our community efforts:`
           footerMessage.className = 'center'
           document.body.appendChild(footerMessage)
+          const footerMessage2 = document.createElement('p')
+          footerMessage2.className = 'center'
+          footerMessage2.innerHTML = `<a target="_blank" style="display:inline; padding: 0" href="https://t.me/RottenHalloween">RottenHalloween</a> - 
+              <a target="_blank" style="display:inline; padding: 0" href="https://t.me/RottenNFT">RottenNFT</a> - 
+              <a target="_blank" style="display:inline; padding: 0" href="https://t.me/ROTGamblingDapp">ROTGamblingDapp</a>`
+          document.body.appendChild(footerMessage2)
         }
 
         function formatEthAddress (ethAddress) {
