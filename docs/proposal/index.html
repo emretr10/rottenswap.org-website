@@ -157,6 +157,9 @@
             if (!isArchive) {
               proposals = proposals.filter(proposal => proposal.status !== 'hidden')
             }
+            else {
+              proposals = proposals.filter(proposal => proposal.status === 'hidden')
+            }
 
             console.log({proposals})
             loading.remove()
