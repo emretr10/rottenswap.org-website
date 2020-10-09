@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "d2e70b5bd9f32d5dccf81c34835af0a4",
+    "revision": "8719d2bdb4f8b6a3962c56d6c94921eb",
     "url": "/index.html"
   },
   {
-    "revision": "da824f8fc42f12e454b0",
+    "revision": "cf005a1ac34c4f19b369",
     "url": "/static/css/main.81261090.chunk.css"
   },
   {
@@ -64,8 +64,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/js/9.48bcbb9d.chunk.js"
   },
   {
-    "revision": "da824f8fc42f12e454b0",
-    "url": "/static/js/main.8d7c6c8f.chunk.js"
+    "revision": "cf005a1ac34c4f19b369",
+    "url": "/static/js/main.b54885df.chunk.js"
   },
   {
     "revision": "19e7297bc0e98bb1da2e",
@@ -116,6 +116,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/ren.e7bd9fe5.png"
   },
   {
+    "revision": "4887db9084fcb990879dda0bc850aa0f",
+    "url": "/static/media/rot-sushi.4887db90.png"
+  },
+  {
     "revision": "a8fc8f0766d8454d600537b37345390a",
     "url": "/static/media/rot-uni.a8fc8f07.png"
   },
@@ -130,10 +134,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "679aed55b98690cb4d5be27ee012d21b",
     "url": "/static/media/srm.679aed55.png"
-  },
-  {
-    "revision": "11f8863b057a86ae63f66297f528ae8b",
-    "url": "/static/media/sushi.11f8863b.png"
   },
   {
     "revision": "b4ea068d73ce0e9b8b4e9f4fbbe68c2c",
