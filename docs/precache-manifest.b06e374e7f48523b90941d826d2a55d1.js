@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "827c8867766612f26875415d30a7edc4",
+    "revision": "cf91bee61e0671c06fb54b00a6105534",
     "url": "/index.html"
   },
   {
-    "revision": "b1683607cb9b1b235c82",
+    "revision": "a7a9486be18a92963764",
     "url": "/static/css/main.81261090.chunk.css"
   },
   {
@@ -64,8 +64,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/js/9.48bcbb9d.chunk.js"
   },
   {
-    "revision": "b1683607cb9b1b235c82",
-    "url": "/static/js/main.d80a48c2.chunk.js"
+    "revision": "a7a9486be18a92963764",
+    "url": "/static/js/main.5d680025.chunk.js"
   },
   {
     "revision": "19e7297bc0e98bb1da2e",
@@ -120,8 +120,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/rot-sushi.4887db90.png"
   },
   {
-    "revision": "43be70352500484e641e13512179c6a7",
-    "url": "/static/media/rot-uni.43be7035.png"
+    "revision": "bb8f50ab150f3fcb20aa651b1890c269",
+    "url": "/static/media/rot-uni.bb8f50ab.png"
   },
   {
     "revision": "5a0b5d19bf8c74d0c2dfda527082d32e",
